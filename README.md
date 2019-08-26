@@ -2,7 +2,7 @@
 This is a repository for collecting real-time data from the MTA Developer API to compute subway delays at each station.
 
 ## Data Source
-### MTA Subway Schedules
+### Schedules
 - MTA pdf: https://new.mta.info/schedules
 - MTA GTFS: http://web.mta.info/developers/data/nyct/subway/google_transit.zip
 - OpenMobilityData GTFS: https://transitfeeds.com/p/mta/79

@@ -15,7 +15,9 @@ OpenMobilityData: https://transitfeeds.com/p/mta/234
 MTA API: http://datamine.mta.info/list-of-feeds
 
 #### GTFS Records
-MTA: http://web.mta.info/developers/developer-data-terms.html#data
+MTA Data Feeds: http://web.mta.info/developers/developer-data-terms.html#data
+B-Division (letter trains): http://web.mta.info/developers/data/archives.html
+A-Division (Numeric trains): http://web.mta.info/developers/MTA-Subway-Time-historical-data.html
 
 ## Reference
 ### Web Application

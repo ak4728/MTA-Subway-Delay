@@ -1,22 +1,22 @@
-# MTA-Subway-Delay
+# MTA Subway Delays
 This is a repository for collecting real-time data from the MTA Developer API to compute subway delays at each station.
 
 ## Data Source
 ### Schedules
-- MTA pdf: https://new.mta.info/schedules
-- MTA GTFS: http://web.mta.info/developers/data/nyct/subway/google_transit.zip
+- MTA PDF Schedules : https://new.mta.info/schedules
+- MTA GTFS data : http://web.mta.info/developers/data/nyct/subway/google_transit.zip
 - OpenMobilityData GTFS: https://transitfeeds.com/p/mta/79
 
 ### Actual Arrivals
 #### Real-time GTFS
-MTA portal: https://new.mta.info/
+MTA Portal: https://new.mta.info/
 MTA Application: http://subwaytime.mta.info/
 OpenMobilityData: https://transitfeeds.com/p/mta/234
 MTA API: http://datamine.mta.info/list-of-feeds
 
 #### GTFS Records
 MTA Data Feeds: http://web.mta.info/developers/developer-data-terms.html#data
-B-Division (letter trains): http://web.mta.info/developers/data/archives.html
+B-Division (Letter trains): http://web.mta.info/developers/data/archives.html
 A-Division (Numeric trains): http://web.mta.info/developers/MTA-Subway-Time-historical-data.html
 
 ## Reference

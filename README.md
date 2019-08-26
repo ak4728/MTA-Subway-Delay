@@ -7,14 +7,14 @@ This is a repository for collecting real-time data from the MTA Developer API to
 - MTA GTFS: http://web.mta.info/developers/data/nyct/subway/google_transit.zip
 - OpenMobilityData GTFS: https://transitfeeds.com/p/mta/79
 
-### Actual arrival
+### Actual Arrivals
 #### Real-time GTFS
 MTA portal: https://new.mta.info/
 MTA Application: http://subwaytime.mta.info/
 OpenMobilityData: https://transitfeeds.com/p/mta/234
 MTA API: http://datamine.mta.info/list-of-feeds
 
-#### GTFS records
+#### GTFS Records
 MTA: http://web.mta.info/developers/developer-data-terms.html#data
 
 ## Reference

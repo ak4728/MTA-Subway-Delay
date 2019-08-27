@@ -10,8 +10,11 @@ This is a repository for collecting real-time data from the MTA Developer API to
 ### Actual Arrivals
 #### Real-time GTFS
 MTA Portal: https://new.mta.info/
+
 MTA Application: http://subwaytime.mta.info/
+
 OpenMobilityData: https://transitfeeds.com/p/mta/234
+
 MTA API: http://datamine.mta.info/list-of-feeds
 
 #### GTFS Records

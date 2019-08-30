@@ -1,6 +1,9 @@
 # MTA Subway Delays
 This is a repository for collecting real-time data from the MTA Developer API to compute subway delays at each station.
 
+## Requirements
+- 
+
 ## Data Source
 ### Schedules
 - MTA PDF Schedules : https://new.mta.info/schedules

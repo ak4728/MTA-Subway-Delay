@@ -31,6 +31,7 @@ import MTAGTFS
 APIkey = 'YOUR MTA SUBWAY API KEY'
 ```
 ``` python
+# CollectRealtimeGTFS keeps requesting MTA subway real-time status, and writting them into gtfs files.
 MTAGTFS.CollectRealtimeGTFS(APIkey)
 ```
 
@@ -39,27 +40,26 @@ MTAGTFS.CollectRealtimeGTFS(APIkey)
 
 ## Data Source
 ### Schedules
-- MTA PDF Schedules : https://new.mta.info/schedules
-- MTA GTFS data : http://web.mta.info/developers/data/nyct/subway/google_transit.zip
-- OpenMobilityData GTFS: https://transitfeeds.com/p/mta/79
+GTFS schedule data is refreshed whenever warranted by service changes, on average about every 4 months
+- [Most Recent GTFS Schedules from MTA](http://web.mta.info/developers/data/nyct/subway/google_transit.zip)
+- [Most Recent PDF Schedules from MTA](https://new.mta.info/schedules)
+- [Historical GTFS Schedules from OpenMobilityData](https://transitfeeds.com/p/mta/79)
 
 ### Actual Arrivals
-#### Real-time GTFS
-- MTA API: http://datamine.mta.info/list-of-feeds
-- MTA Portal: https://new.mta.info/
-- MTA Application: http://subwaytime.mta.info/
-- OpenMobilityData: https://transitfeeds.com/p/mta/234
+#### Real-time
+- [MTA API](http://datamine.mta.info/list-of-feeds)
+- [MTA APP](http://subwaytime.mta.info/)
+- [MTA Portal](https://new.mta.info/)
+- [OpenMobilityData](https://transitfeeds.com/p/mta/234)
 
-
-#### GTFS Records
-- MTA Data Feeds: http://web.mta.info/developers/developer-data-terms.html#data
-- B-Division (Letter trains): http://web.mta.info/developers/data/archives.html
-- A-Division (Numeric trains): http://web.mta.info/developers/MTA-Subway-Time-historical-data.html  
-                               https://datamine-history.s3.amazonaws.com/index.html
+#### Historical
+- [MTA Data Feeds](http://web.mta.info/developers/developer-data-terms.html#data)
+- [B-Division (Letter trains)](http://web.mta.info/developers/data/archives.html)
+- [A-Division (Numeric trains)](https://datamine-history.s3.amazonaws.com/index.html)
 ## Reference
 ### Web Application
-- subwaystats: http://subwaystats.com/
-- MTA dashboard: http://dashboard.mta.info/
+- [subwaystats](http://subwaystats.com/)
+- [MTA dashboard](http://dashboard.mta.info/)
 
 ### MTA GTFS Dictionary
-- http://datamine.mta.info/sites/all/files/pdfs/GTFS-Realtime-NYC-Subway%20version%201%20dated%207%20Sep.pdf
+- [GTFS-realtime Reference](http://datamine.mta.info/sites/all/files/pdfs/GTFS-Realtime-NYC-Subway%20version%201%20dated%207%20Sep.pdf)

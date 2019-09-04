@@ -45,3 +45,8 @@ def CollectRealtimeGTFS(APIkey):
 
         import time
         time.sleep(3) # Every 5 seconds update; 3 seconds sleep for a loop to make sure the data integrity.
+        
+if __name__ == "__main__":
+    import sys
+    APIkey = sys.argv[1]
+    CollectRealtimeGTFS(APIkey)

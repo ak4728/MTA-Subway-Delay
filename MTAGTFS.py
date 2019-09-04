@@ -19,7 +19,7 @@ def RequestsWrite(APIkey, feed_id):
     FolderName = '%02d'%(timestamp.year) + '%02d'%(timestamp.month) + '%02d'%(timestamp.day)
     if not os.path.isdir(FolderName):
         os.mkdir(FolderName)
-    file = open(FolderName + "/gtfs_" + str(feed_id) + '_' + str(timestamp).replace(" ", "-").replace(":", "-") + ".gtfs", "wb") # gtfs_2019-09-03-15-42-43.gtfs
+    file = open(FolderName + "/gtfs_" + str(feed_id) + '_' + str(timestamp).replace(" ", "-").replace(":", "-") + ".gtfs", "wb")
     file.write(response.content)
     file.close()
 
@@ -27,6 +27,7 @@ def CollectRealtimeGTFS(APIkey):
     '''
     This function takes APIkey as an input, and 
     Keep requesting MTA subway real-time status, and Writting gtfs files.
+    Note: this is an endless loop; to stop this program in terminal, please press Control + C.
     '''    
     feed_id_lines = {'1': '123456S',
                 '26': 'ACEHS',
@@ -45,10 +46,12 @@ def CollectRealtimeGTFS(APIkey):
                 RequestsWrite(APIkey, feed_id)
             except:
                 continue
+                
         import time
-        time.sleep(2) # Every 5 seconds update; 3 seconds sleep for a loop to make sure the data integrity.
+        time.sleep(3) 
+        # 15 seconds per update on average (confidence interval between 5 to 30 sec); 
+        # 3 seconds sleep (totally less than 5 seconds) for each loop to make sure the data integrity.
 
 if __name__ == "__main__":
-#     import sys
     APIkey = input('MTA API KEY: ')
     CollectRealtimeGTFS(APIkey)

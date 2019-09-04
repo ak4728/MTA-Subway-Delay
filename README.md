@@ -2,7 +2,8 @@
 This is a repository for collecting real-time data from the MTA Developer API to compute subway delays at each station.
 
 ## Requirements
-- python libraries: requests, os, datetime, time, gtfs-realtime-bindings  
+- MTA SUBWAY API KEY:
+- python libraries: requests, os, datetime, time, gtfs-realtime-bindings.  
 If you did not prepare the dependent libraries, please run codes below in Terminal:  
 ``` python
 pip install --upgrade requests, os, datetime, time, gtfs-realtime-bindings
@@ -21,7 +22,7 @@ pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
 3. Input MTA SUBWAY API KEY
 
 #### Exit
-To stop your program, just press ```Control + C```.
+To stop your program, please press ```Control + C```.
 
 ### Jupyter Notebook
 ``` python
@@ -31,6 +32,10 @@ APIkey = 'YOUR MTA SUBWAY API KEY'
 ``` python
 MTAGTFS.CollectRealtimeGTFS(APIkey)
 ```
+
+## Update Interval
+15 seconds per update on average
+
 ## Data Source
 ### Schedules
 - MTA PDF Schedules : https://new.mta.info/schedules
@@ -39,11 +44,11 @@ MTAGTFS.CollectRealtimeGTFS(APIkey)
 
 ### Actual Arrivals
 #### Real-time GTFS
+- MTA API: http://datamine.mta.info/list-of-feeds
 - MTA Portal: https://new.mta.info/
 - MTA Application: http://subwaytime.mta.info/
 - OpenMobilityData: https://transitfeeds.com/p/mta/234
 
-MTA API: http://datamine.mta.info/list-of-feeds
 
 #### GTFS Records
 - MTA Data Feeds: http://web.mta.info/developers/developer-data-terms.html#data

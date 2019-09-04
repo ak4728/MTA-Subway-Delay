@@ -41,12 +41,14 @@ def CollectRealtimeGTFS(APIkey):
     var = 1
     while var <= 1: # every loop takes about 1 seconds for all 9 feed_id
         for feed_id in feed_id_lines.keys():
-            RequestsWrite(APIkey, feed_id)
-
+            try:
+                RequestsWrite(APIkey, feed_id)
+            except:
+                continue
         import time
-        time.sleep(3) # Every 5 seconds update; 3 seconds sleep for a loop to make sure the data integrity.
-        
+        time.sleep(2) # Every 5 seconds update; 3 seconds sleep for a loop to make sure the data integrity.
+
 if __name__ == "__main__":
-    import sys
-    APIkey = sys.argv[1]
+#     import sys
+    APIkey = input('MTA API KEY: ')
     CollectRealtimeGTFS(APIkey)

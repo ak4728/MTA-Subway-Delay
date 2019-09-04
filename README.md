@@ -2,20 +2,36 @@
 This is a repository for collecting real-time data from the MTA Developer API to compute subway delays at each station.
 
 ## Requirements
--
+- python libraries: requests, os, datetime, time, gtfs-realtime-bindings  
+
+If you did not prepare the dependent libraries, please run codes below in Terminal:  
+```
+pip install --upgrade requests, os, datetime, time, gtfs-realtime-bindings
+```
 
 ## Installation
+```
 pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
+```
 
 ## Usage
 ### Terminal
+#### Execution
+1. Open Terminal
+2. ```python MTAGTFS.py```
+3. Input MTA SUBWAY API KEY
+
+#### Exit
+To stop your program, just press ```Control + C```.
 
 ### Jupyter Notebook
+```
 import MTAGTFS
 APIkey = 'YOUR MTA SUBWAY API KEY'
-
+```
+```
 MTAGTFS.CollectRealtimeGTFS(APIkey)
-
+```
 ## Data Source
 ### Schedules
 - MTA PDF Schedules : https://new.mta.info/schedules

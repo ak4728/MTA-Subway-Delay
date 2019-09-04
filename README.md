@@ -3,14 +3,13 @@ This is a repository for collecting real-time data from the MTA Developer API to
 
 ## Requirements
 - python libraries: requests, os, datetime, time, gtfs-realtime-bindings  
-
 If you did not prepare the dependent libraries, please run codes below in Terminal:  
-```
+``` python
 pip install --upgrade requests, os, datetime, time, gtfs-realtime-bindings
 ```
 
 ## Installation
-```
+``` python
 pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
 ```
 
@@ -25,11 +24,11 @@ pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
 To stop your program, just press ```Control + C```.
 
 ### Jupyter Notebook
-```
+``` python
 import MTAGTFS
 APIkey = 'YOUR MTA SUBWAY API KEY'
 ```
-```
+``` python
 MTAGTFS.CollectRealtimeGTFS(APIkey)
 ```
 ## Data Source

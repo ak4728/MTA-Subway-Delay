@@ -3,10 +3,10 @@ This is a repository for collecting real-time data from the MTA Developer API to
 
 ## Requirements
 - MTA SUBWAY API KEY: [Click here to register and get a MTA API KEY](https://datamine.mta.info/user/register)
-- python libraries: requests, os, datetime, time, gtfs-realtime-bindings.  
+- python libraries: requests, os, datetime, time, pandas, gtfs-realtime-bindings.  
 Please run codes below in terminal to prepare the dependent libraries:  
 ``` python
-pip install --upgrade requests, os, datetime, time, gtfs-realtime-bindings
+pip install --upgrade requests, os, datetime, time, pandas, gtfs-realtime-bindings
 ```
 
 ## Installation
@@ -28,13 +28,25 @@ To stop your program, please press ```Control + C```.
 ### Jupyter Notebook
 ``` python
 import MTAGTFS
-APIkey = 'YOUR MTA SUBWAY API KEY'
 ```
 ``` python
-# CollectRealtimeGTFS keeps requesting MTA subway real-time status, and writting them into gtfs files.
-MTAGTFS.CollectRealtimeGTFS(APIkey)
+# 'collect' takes APIkey as an input, and Keep requesting MTA subway real-time status, and Writting gtfs files.
+APIkey = 'YOUR MTA SUBWAY API KEY'
+MTAGTFS.collect(APIkey)
+```
+``` python
+# 'arrival' takes year, month, day as an input, structures and integrates the GTFS files in the corresponding folder, and outputs a arrival csv file.
+year, month, day = '2018', '08', '01'
+MTAGTFS.arrival(year, month, day)
 ```
 
+``` python
+# 'delay' takes year, month, day as an input, calculateS delays by actual arrivals and schedules, and outputs a delay csv file.    
+year, month, day = '2018', '08', '01'
+MTAGTFS.delay(year, month, day)
+# This function require actual arrival/ schedule csv files in the corresponding folder.
+
+```
 ## Update Interval
 15 seconds per update on average
 
@@ -63,3 +75,8 @@ GTFS schedule data is refreshed whenever warranted by service changes, on averag
 
 ### MTA GTFS Dictionary
 - [GTFS-realtime Reference](http://datamine.mta.info/sites/all/files/pdfs/GTFS-Realtime-NYC-Subway%20version%201%20dated%207%20Sep.pdf)
+
+## Bias & Limitation
+- Not all arrival data is uploaded in this MTA real-time system.
+- Abnormal data exists (abnormal time/ trip_id), and they were filtered.
+- Sampling rate reported.

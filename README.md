@@ -3,10 +3,10 @@ This is a repository for collecting real-time data from the MTA Developer API to
 
 ## Requirements
 - MTA SUBWAY API KEY: [Click here to register and get a MTA API KEY](https://datamine.mta.info/user/register)
-- python libraries: requests, os, datetime, time, pandas, gtfs-realtime-bindings.  
+- python libraries: os, time, datetime, requests, pandas, gtfs-realtime-bindings.  
 Please run codes below in terminal to prepare the dependent libraries:  
 ``` python
-pip install --upgrade requests, os, datetime, time, pandas, gtfs-realtime-bindings
+pip install --upgrade requests, datetime, pandas, gtfs-realtime-bindings
 ```
 
 ## Installation

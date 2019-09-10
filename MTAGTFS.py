@@ -27,7 +27,7 @@ def RequestsWrite(APIkey, feed_id):
 def collect(APIkey):
     '''
     This function takes APIkey as an input, and 
-    Keep requesting MTA subway real-time status, and Writting gtfs files.
+    Keep requesting real-time status for all MTA subway lines, and Writting gtfs files.
     Note: this is an endless loop; to stop this program in terminal, please press Control + C.
     '''    
     feed_id_lines = {'1': '123456S',
@@ -53,14 +53,15 @@ def collect(APIkey):
         # 15 seconds per update on average (confidence interval between 5 to 30 sec); 
         # 3 seconds sleep (totally less than 5 seconds) for each loop to make sure the data integrity.
 
-def arrival(year, month, day):
+def arrival(date):
     '''
-    This function takes year, month, day as an input,
+    This function takes date(e.g. 20190901) as an input,
     structure and integrate the gtfs files in the corresponding folder,
     output a arrival csv file.
     '''
     errornum = 0
     import os
+    year, month, day = date[:4], date[4:6], date[6:8]
     FolderPath = year + month + '/' + year + month + day
     gtfsFileNames = os.listdir(FolderPath)
     dict1 = {}
@@ -90,32 +91,22 @@ def arrival(year, month, day):
                         vehicle_timestamp = entity2.vehicle.timestamp
                         vehicle_stop_id = entity2.vehicle.stop_id       
 
+                        dict0 = {'gtfs_timestamp': gtfs_timestamp,
+                                'trip_id': trip_id,
+                                'arrival_time': arrival_time,
+                                'stop_id': stop_id,
+                                'route_id': route_id,
+                                'current_stop_sequence': current_stop_sequence,
+                                'current_status': current_status,
+                                'vehicle_timestamp': vehicle_timestamp,
+                                'vehicle_stop_id': vehicle_stop_id
+                              }                    
+                            
                         try: # update record
-                            if not gtfs_timestamp < dict1[trip_id+ '//' + stop_id]['gtfs_timestamp']:  
-                                dict1[trip_id+ '//' + stop_id] = \
-                                    {'gtfs_timestamp': gtfs_timestamp,
-                                        'trip_id': trip_id,
-                                        'arrival_time': arrival_time,
-                                        'stop_id': stop_id,
-                                        'route_id': route_id,
-                                        'current_stop_sequence': current_stop_sequence,
-                                        'current_status': current_status,
-                                        'vehicle_timestamp': vehicle_timestamp,
-                                        'vehicle_stop_id': vehicle_stop_id
-                                    }                    
-
+                            if gtfs_timestamp >= dict1[trip_id+ '//' + stop_id]['gtfs_timestamp']:  
+                                dict1[trip_id+ '//' + stop_id] = dict0  
                         except: # add new record
-                            dict1[trip_id+ '//' + stop_id] = \
-                                {'gtfs_timestamp': gtfs_timestamp,
-                                    'trip_id': trip_id,
-                                    'arrival_time': arrival_time,
-                                    'stop_id': stop_id,
-                                    'route_id': route_id,
-                                    'current_stop_sequence': current_stop_sequence,
-                                    'current_status': current_status,
-                                    'vehicle_timestamp': vehicle_timestamp,
-                                    'vehicle_stop_id': vehicle_stop_id
-                                }      
+                            dict1[trip_id+ '//' + stop_id] = dict0
                     except:
                         continue
         except: # DecodeError: Error parsing message
@@ -127,14 +118,16 @@ def arrival(year, month, day):
     df = pd.DataFrame.from_dict(dict1).T
     df.to_csv(year + month + '/arrival_' + year + month + day + '.csv')
 
-def delay(year, month, day):
+def delay(date):
     '''
-    This function takes year, month, day as an input,
+    This function takes date as an input,
     calculate delays by actual arrivals and schedules,
     output a delay csv file.    
     ** require actual arrival/ schedule csv files in the corresponding folder,
 
     '''
+    year, month, day = date[:4], date[4:6], date[6:8]
+
     #################### Actual Arrival ####################
     import pandas as pd
     df = pd.read_csv(year + month + '/arrival_' + year + month + day + '.csv')

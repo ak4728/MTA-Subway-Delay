@@ -114,7 +114,7 @@ def arrival(date):
             continue
     print("%d GTFS files cannot be parsed"%errornum)
     
-    df = pd.DataFrame.from_dict(dict1).T
+    df = pd.DataFrame.from_dict(dict1).T.reset_index(drop=True)
     df.to_csv(year + month + '/arrival_' + year + month + day + '.csv')
 
 def delay(date):
@@ -128,7 +128,7 @@ def delay(date):
     year, month, day = date[:4], date[4:6], date[6:8]
 
     #################### Actual Arrival ####################
-    df = pd.read_csv(year + month + '/arrival_' + year + month + day + '.csv')
+    df = pd.read_csv(year + month + '/arrival_' + year + month + day + '.csv', index_col=0)
 
     df.arrival_time = df.arrival_time.apply(lambda x: datetime.fromtimestamp(x))
     df.gtfs_timestamp = df.gtfs_timestamp.apply(lambda x: datetime.fromtimestamp(x))

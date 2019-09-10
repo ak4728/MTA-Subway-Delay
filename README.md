@@ -30,22 +30,25 @@ To stop your program, please press ```Control + C```.
 import MTAGTFS
 ```
 ``` python
-# 'collect' takes APIkey as an input, and Keep requesting MTA subway real-time status, and Writting gtfs files.
+# 'collect' function takes APIkey as an input, keeps requesting MTA subway real-time status and Writting gtfs files.
+# Output GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs
 APIkey = 'YOUR MTA SUBWAY API KEY'
 MTAGTFS.collect(APIkey)
 ```
 ``` python
-# 'arrival' takes date as an input, structures and integrates the GTFS files in the corresponding folder, and outputs a arrival csv file.
+# 'arrival' function takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file.
+# Require GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs
+# Output actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv
 date = '20180801'
 MTAGTFS.arrival(date)
 ```
 
 ``` python
-# 'delay' takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.    
+# 'delay' takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.
+# Require actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv
+# Output calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv
 date = '20180801'
 MTAGTFS.delay(date)
-# This function require actual arrival/ schedule csv files in the corresponding folder.
-
 ```
 ## Update Interval
 15 seconds per update on average

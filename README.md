@@ -77,6 +77,7 @@ GTFS schedule data is refreshed whenever warranted by service changes, on averag
 - [GTFS-realtime Reference](http://datamine.mta.info/sites/all/files/pdfs/GTFS-Realtime-NYC-Subway%20version%201%20dated%207%20Sep.pdf)
 
 ## Bias & Limitation
-- Not all arrival data is uploaded in this MTA real-time system.
-- Abnormal data exists (abnormal time/ trip_id), and they were filtered.
-- Sampling rate reported.
+- Sampling process
+  - Not all arrival data is uploaded in this MTA real-time system.
+  - Abnormal data exists (abnormal time/ trip_id), and they were filtered.
+  - Sampling rate reported.

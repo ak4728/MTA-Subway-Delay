@@ -20,7 +20,6 @@ pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
 Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.  
 To stop this program, please press ```Control + C```.
 ```python
-# Execute  function：
 python mtagtfs.py
 ```
 

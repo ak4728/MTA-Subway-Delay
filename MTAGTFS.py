@@ -24,7 +24,7 @@ def RequestsWrite(APIkey, feed_id):
     FolderName = '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '/' \
         + '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '%02d'%(timestamp.day)
     if not os.path.isdir(FolderName):
-        os.mkdir(FolderName)
+        os.makedirs(FolderName)
     file = open(FolderName + "/gtfs_" + str(feed_id) + '_' + str(timestamp).replace(" ", "-").replace(":", "-") + ".gtfs", "wb")
     file.write(response.content)
     file.close()
@@ -149,7 +149,7 @@ def delay(date, date_schedule = 'latest'):
     FileName = FolderName + ".zip"
     url = 'https://transitfeeds.com/p/mta/79/' + date_schedule + '/download'
     if not os.path.isdir(FolderName):
-        os.mkdir(FolderName)
+        os.makedirs(FolderName)
         urllib.request.urlretrieve(url, FileName)
         with zipfile.ZipFile(FileName, 'r') as zip_ref:
             zip_ref.extractall(FolderName)

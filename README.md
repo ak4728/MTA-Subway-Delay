@@ -35,15 +35,15 @@ APIkey = 'YOUR MTA SUBWAY API KEY'
 MTAGTFS.collect(APIkey)
 ```
 ``` python
-# 'arrival' takes year, month, day as an input, structures and integrates the GTFS files in the corresponding folder, and outputs a arrival csv file.
-year, month, day = '2018', '08', '01'
-MTAGTFS.arrival(year, month, day)
+# 'arrival' takes date as an input, structures and integrates the GTFS files in the corresponding folder, and outputs a arrival csv file.
+date = '20180801'
+MTAGTFS.arrival(date)
 ```
 
 ``` python
-# 'delay' takes year, month, day as an input, calculateS delays by actual arrivals and schedules, and outputs a delay csv file.    
-year, month, day = '2018', '08', '01'
-MTAGTFS.delay(year, month, day)
+# 'delay' takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.    
+date = '20180801'
+MTAGTFS.delay(date)
 # This function require actual arrival/ schedule csv files in the corresponding folder.
 
 ```

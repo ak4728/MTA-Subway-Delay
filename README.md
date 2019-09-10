@@ -54,8 +54,29 @@ MTAGTFS.arrival(date)
 date = '20180801'
 MTAGTFS.delay(date)
 ```
-## Update Interval
+## Data Description
+### Update Interval
 15 seconds per update on average
+### Column Explanation
+| Column Name | Explanation |
+| ------------- |:-------------:|
+|'arrival_time'|actual arrival time|
+|'arrival_time_scheduled'|scheduled arrival time|
+|'departure_time_scheduled'|scheduled departure time|
+|'delay'|calculated delay in seconds|
+|'gtfs_timestamp'|status report time|
+|'trip_id'|MTA trip id|
+|'stop_id'|arrival stop id|
+|'route_id'|route id|
+|'current_stop_sequence'|arrival stop sequence when reporting status|
+|'current_status'|stop status when reporting status (1|STOPPED_AT| 2||IN_TRANSIT_TO)|
+|'vehicle_timestamp'|time of reporting status by train|
+|'vehicle_stop_id'|stop id when reporting status|
+|'weekday'|weekday|
+|'trip_id2'|reconstructed trip id|
+|'match_id'|unique id for matching arrivals and schedules.
+
+
 
 ## Data Source
 ### Schedules

@@ -20,7 +20,7 @@ pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
 Please run codes below in terminal and then input your MTA SUBWAY API KEY:
 ```python
 # Execute 'collect' function： takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.
-python MTAGTFS.py
+python mtagtfs.py
 ```
 
 #### Exit
@@ -28,20 +28,20 @@ To stop this program, please press ```Control + C```.
 
 ### Jupyter Notebook
 ``` python
-import MTAGTFS
+import mtagtfs
 ```
 ``` python
 # 'collect' function takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.
 # Output GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs
 APIkey = 'YOUR MTA SUBWAY API KEY'
-MTAGTFS.collect(APIkey)
+mtagtfs.collect(APIkey)
 ```
 ``` python
 # 'arrival' function takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file.
 # Require GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs
 # Output actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv
 date = '20180801'
-MTAGTFS.arrival(date)
+mtagtfs.arrival(date)
 ```
 
 ``` python
@@ -49,10 +49,10 @@ MTAGTFS.arrival(date)
 # Require actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv
 # Output calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv
 date = '20180801'
-MTAGTFS.delay(date) # Schedule default setting is the latest
+mtagtfs.delay(date) # Schedule default setting is the latest
 
 # For historical schedule, please set the argument date_schedule (refer to: https://transitfeeds.com/p/mta/79):
-MTAGTFS.delay(date, date_schedule = '20180708')
+mtagtfs.delay(date, date_schedule = '20180708')
 ```
 ## Data Description
 ### Update Interval
@@ -69,14 +69,14 @@ MTAGTFS.delay(date, date_schedule = '20180708')
 ### Column Explanation
 | Column Name | Explanation |
 | ------------- |:-------------:|
-|'arrival_time'|actual arrival time|
-|'arrival_time_scheduled'|scheduled arrival time|
+|**'arrival_time'**|actual arrival time|
+|**'arrival_time_scheduled'**|scheduled arrival time|
 |'departure_time_scheduled'|scheduled departure time|
-|'delay'|calculated delay in seconds|
+|**'delay'**|calculated delay in seconds|
+|**'stop_id'**|arrival stop id|
+|**'route_id'**|route id|
 |'gtfs_timestamp'|status report time|
 |'trip_id'|trip id|
-|'stop_id'|arrival stop id|
-|'route_id'|route id|
 |'current_stop_sequence'|arrival stop sequence when reporting status|
 |'current_status'|stop status when reporting status (1|STOPPED_AT| 2||IN_TRANSIT_TO)|
 |'vehicle_timestamp'|time of reporting status by train|

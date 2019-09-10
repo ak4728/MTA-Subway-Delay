@@ -20,6 +20,7 @@ pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
 Please run codes below in terminal and then input your MTA SUBWAY API KEY:
 ```python
 # Execute 'collect' function： takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.
+
 python MTAGTFS.py
 ```
 
@@ -57,6 +58,14 @@ MTAGTFS.delay(date)
 ## Data Description
 ### Update Interval
 15 seconds per update on average
+
+### Data availability
+| MTA Division | Start Date |	End Date	| Notes |
+| ------------- |:-------------:| :-------------:| :-------------:|
+|A-division (Numeric trains)|2014-09-16|2018-10-13|Daily packaged tgz file from AWS |
+|B-division  (Letter trains)|2018-08-01|2019-06-01|Monthly packaged zip file from MTA|
+
+
 ### Column Explanation
 | Column Name | Explanation |
 | ------------- |:-------------:|
@@ -65,7 +74,7 @@ MTAGTFS.delay(date)
 |'departure_time_scheduled'|scheduled departure time|
 |'delay'|calculated delay in seconds|
 |'gtfs_timestamp'|status report time|
-|'trip_id'|MTA trip id|
+|'trip_id'|trip id|
 |'stop_id'|arrival stop id|
 |'route_id'|route id|
 |'current_stop_sequence'|arrival stop sequence when reporting status|

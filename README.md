@@ -18,7 +18,8 @@ pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
 ## Usage
 ### Terminal
 #### collect function
-Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.  
+Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files;  
+Require mtagtfs.py in the current working directory;  
 To stop this program, please press ```Control + C```.
 ```python
 python mtagtfs.py
@@ -29,25 +30,25 @@ python mtagtfs.py
 import mtagtfs
 ```
 #### collect function
-Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.  
-Outputs GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs
+Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files;  
+Outputs GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs.
 ``` python
 APIkey = 'YOUR MTA SUBWAY API KEY'
 mtagtfs.collect(APIkey)
 ```
 #### arrival function
-Takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file.  
-Requires GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs  
-Outputs actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv
+Takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file;  
+Requires GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs;  
+Outputs actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv.  
 ``` python
 date = '20180801'
 mtagtfs.arrival(date)
 ```
 
 #### delay function
-Takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.  
-Requires actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv  
-Outputs calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv
+Takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file;  
+Requires actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv;  
+Outputs calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv.  
 ``` python
 # Default Schedule date is the latest
 date = '20190901'

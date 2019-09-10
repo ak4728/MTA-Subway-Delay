@@ -1,10 +1,12 @@
-import time
-import requests
 import os
+import urllib
+import requests
+import zipfile
 import pandas as pd
-from google.transit import gtfs_realtime_pb2
+import time
 from datetime import datetime
-
+from google.transit import gtfs_realtime_pb2
+    
 def RequestsWrite(APIkey, feed_id):
     '''
     This function takes APIkey and feed_id as an input, and 
@@ -117,7 +119,7 @@ def arrival(date):
     df = pd.DataFrame.from_dict(dict1).T.reset_index(drop=True)
     df.to_csv(year + month + '/arrival_' + year + month + day + '.csv')
 
-def delay(date):
+def delay(date, date_schedule = 'latest'):
     '''
     This function takes date as an input,
     calculate delays by actual arrivals and schedules,
@@ -141,7 +143,18 @@ def delay(date):
     df['match_id'] = df['trip_id2'] + '//' + df['stop_id'].astype(str)
 
     #################### Schedules ####################
-    stop_times = pd.read_csv("gtfs20180708/stop_times.txt")
+    # download schedule gtfs file
+    # schedule default setting is the latest; for historical schedule, please refer to: https://transitfeeds.com/p/mta/79
+    FolderName = 'schedule_' + date_schedule
+    FileName = FolderName + ".zip"
+    url = 'https://transitfeeds.com/p/mta/79/' + date_schedule + '/download'
+    if not os.path.isdir(FolderName):
+        os.mkdir(FolderName)
+        urllib.request.urlretrieve(url, FileName)
+        with zipfile.ZipFile(FileName, 'r') as zip_ref:
+            zip_ref.extractall(FolderName)
+            
+    stop_times = pd.read_csv(FolderName + "/stop_times.txt")
     stop_times['weekday'] = stop_times.trip_id.apply(lambda x: x.split('-')[-2]) # perfectly extracted
     stop_times['weekday'] = stop_times['weekday'].apply(lambda x: 'Weekday' if x == 'Wednesday' else x) # L train does not have Weekday！ Only ['Saturday', 'Sunday', 'Wednesday']
     stop_times['num_id'] = stop_times.trip_id.apply(lambda x: x.split('_')[1]) # perfectly extracted, fixed lenth
@@ -163,8 +176,17 @@ def delay(date):
     df_match = pd.merge(df, stop_times[['match_id', 'arrival_time_scheduled', 'departure_time_scheduled']], on='match_id', how='inner')
     df_match['delay'] = (df_match['arrival_time'] - df_match['arrival_time_scheduled']).apply(lambda x: x.total_seconds())
     df_match = df_match[(-60*60*23 < df_match['delay']) & (df_match['delay'] < 60*60*23)] # remove abnomal data
+    df_match.reset_index(drop=True, inplace=True)
     df_match.to_csv(year + month + '/delay_' +  year + month + day + '.csv')
 
 if __name__ == "__main__":
+    print()
+    print('This collect function ceaselessly requesting MTA subway real-time status and Writting gtfs files.')
+    print('* To stop this program, please press Control + C.')
+    
+    print()
     APIkey = input('MTA API KEY: ')
+    
+    print()
+    print('Collecting MTA subway gtfs files...')
     collect(APIkey)

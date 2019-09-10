@@ -20,8 +20,9 @@ def RequestsWrite(APIkey, feed_id):
     feed.ParseFromString(response.content)
 
     timestamp = datetime.fromtimestamp(feed.header.timestamp)
-
-    FolderName = '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '/' \
+    
+    path = os.getcwd()
+    FolderName = path + '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '/' \
         + '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '%02d'%(timestamp.day)
     if not os.path.isdir(FolderName):
         os.mkdir(FolderName)

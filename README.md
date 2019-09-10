@@ -11,6 +11,7 @@ pip install --upgrade requests, datetime, pandas, gtfs-realtime-bindings
 
 ## Installation
 ``` python
+# require administrator permission
 pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
 ```
 

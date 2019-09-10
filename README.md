@@ -19,19 +19,21 @@ pip install git+https://github.com/ak4728/MTA-Subway-Delay.git
 #### Execution
 Please run codes below in terminal and then input your MTA SUBWAY API KEY:
 ```python
+# Execute 'collect' function： takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.
 python MTAGTFS.py
 ```
 
 #### Exit
-To stop your program, please press ```Control + C```.
+To stop this program, please press ```Control + C```.
 
 ### Jupyter Notebook
 ``` python
 import MTAGTFS
 ```
 ``` python
-# 'collect' function takes APIkey as an input, keeps requesting MTA subway real-time status and Writting gtfs files.
+# 'collect' function takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.
 # Output GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs
+
 APIkey = 'YOUR MTA SUBWAY API KEY'
 MTAGTFS.collect(APIkey)
 ```
@@ -39,6 +41,7 @@ MTAGTFS.collect(APIkey)
 # 'arrival' function takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file.
 # Require GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs
 # Output actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv
+
 date = '20180801'
 MTAGTFS.arrival(date)
 ```
@@ -47,6 +50,7 @@ MTAGTFS.arrival(date)
 # 'delay' takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.
 # Require actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv
 # Output calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv
+
 date = '20180801'
 MTAGTFS.delay(date)
 ```

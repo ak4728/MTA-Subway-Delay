@@ -30,13 +30,15 @@ To stop this program, please press ```Control + C```.
 ``` python
 import mtagtfs
 ```
-**collect** function takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.  
+#### collect function
+takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files.  
 Output GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs
 ``` python
 APIkey = 'YOUR MTA SUBWAY API KEY'
 mtagtfs.collect(APIkey)
 ```
-**arrival** function takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file.  
+#### arrival function
+takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file.  
 Require GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs  
 Output actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv
 ``` python
@@ -44,14 +46,17 @@ date = '20180801'
 mtagtfs.arrival(date)
 ```
 
-**delay** function takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.
+#### delay function
+takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file.
 Require actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv
 Output calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv
 ``` python
-date = '20180801'
-mtagtfs.delay(date) # Schedule default setting is the latest
+# Default Schedule date is the latest
+date = '20190901'
+mtagtfs.delay(date)
 
-# For historical schedule, please set the argument date_schedule (refer to: https://transitfeeds.com/p/mta/79):
+# For historical schedules, please set the argument date_schedule, refer to: https://transitfeeds.com/p/mta/79:
+date = '20180801'
 mtagtfs.delay(date, date_schedule = '20180708')
 ```
 ## Data Description
@@ -106,12 +111,12 @@ GTFS schedule data is refreshed whenever warranted by service changes, on averag
 - [B-Division (Letter trains)](http://web.mta.info/developers/data/archives.html)
 - [A-Division (Numeric trains)](https://datamine-history.s3.amazonaws.com/index.html)
 ## Reference
+### MTA GTFS Dictionary
+- [GTFS-realtime Reference](http://datamine.mta.info/sites/all/files/pdfs/GTFS-Realtime-NYC-Subway%20version%201%20dated%207%20Sep.pdf)
+
 ### Web Application
 - [subwaystats](http://subwaystats.com/)
 - [MTA dashboard](http://dashboard.mta.info/)
-
-### MTA GTFS Dictionary
-- [GTFS-realtime Reference](http://datamine.mta.info/sites/all/files/pdfs/GTFS-Realtime-NYC-Subway%20version%201%20dated%207%20Sep.pdf)
 
 ## Bias & Limitation
 - Sampling process

@@ -1,21 +1,26 @@
+import time
+import requests
+import os
+import pandas as pd
+from google.transit import gtfs_realtime_pb2
+from datetime import datetime
+
 def RequestsWrite(APIkey, feed_id):
     '''
     This function takes APIkey and feed_id as an input, and 
     Requests MTA subway real-time status, and Writes a gtfs file.
     '''
-    import requests
     url = 'http://datamine.mta.info/mta_esi.php?key=' + APIkey + '&feed_id=' + str(feed_id)
 
     response = requests.get(url)
 
-    from google.transit import gtfs_realtime_pb2
+
     feed = gtfs_realtime_pb2.FeedMessage()
     feed.ParseFromString(response.content)
 
-    from datetime import datetime
+
     timestamp = datetime.fromtimestamp(feed.header.timestamp)
 
-    import os
     FolderName = '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '/' \
         + '%04d'%(timestamp.year) + '%02d'%(timestamp.month) + '%02d'%(timestamp.day)
     if not os.path.isdir(FolderName):
@@ -48,7 +53,6 @@ def collect(APIkey):
             except:
                 continue
                 
-        import time
         time.sleep(3) 
         # 15 seconds per update on average (confidence interval between 5 to 30 sec); 
         # 3 seconds sleep (totally less than 5 seconds) for each loop to make sure the data integrity.
@@ -60,7 +64,6 @@ def arrival(year, month, day):
     output a arrival csv file.
     '''
     errornum = 0
-    import os
     FolderPath = year + month + '/' + year + month + day
     gtfsFileNames = os.listdir(FolderPath)
     dict1 = {}
@@ -70,7 +73,7 @@ def arrival(year, month, day):
             # read in gtfs
             f = open(gtfsFilePath, 'rb')
             raw_str = f.read()
-            from google.transit import gtfs_realtime_pb2
+
             msg = gtfs_realtime_pb2.FeedMessage()
             msg.ParseFromString(raw_str)    
 
@@ -123,7 +126,7 @@ def arrival(year, month, day):
             continue
     print("%d GTFS files cannot be parsed"%errornum)
     
-    import pandas as pd
+
     df = pd.DataFrame.from_dict(dict1).T
     df.to_csv(year + month + '/arrival_' + year + month + day + '.csv')
 
@@ -136,10 +139,8 @@ def delay(year, month, day):
 
     '''
     #################### Actual Arrival ####################
-    import pandas as pd
     df = pd.read_csv(year + month + '/arrival_' + year + month + day + '.csv')
 
-    from datetime import datetime
     df.arrival_time = df.arrival_time.apply(lambda x: datetime.fromtimestamp(x))
     df.gtfs_timestamp = df.gtfs_timestamp.apply(lambda x: datetime.fromtimestamp(x))
     df.vehicle_timestamp = df.vehicle_timestamp.apply(lambda x: datetime.fromtimestamp(x))

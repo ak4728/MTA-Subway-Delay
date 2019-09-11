@@ -10,8 +10,9 @@ pip install --upgrade requests, datetime, pandas, gtfs-realtime-bindings
 ```
 
 ## Installation
+Please run codes below in terminal to install mtagtfs.
+Administrator permission is required.
 ``` python
-# require administrator permission
 pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
 ```
 
@@ -19,7 +20,7 @@ pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
 ### Terminal
 #### collect function
 Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files;  
-Require mtagtfs.py in the current working directory;  
+Requires mtagtfs.py in the current working directory;  
 To stop this program, please press ```Control + C```.
 ```python
 python mtagtfs.py

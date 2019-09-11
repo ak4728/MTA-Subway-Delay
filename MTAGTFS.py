@@ -181,7 +181,7 @@ def delay(date, date_schedule = 'latest'):
 
 if __name__ == "__main__":
     print()
-    print('This collect function ceaselessly requesting MTA subway real-time status and Writting gtfs files.')
+    print('This collect function ceaselessly requesting MTA subway real-time status and writing gtfs files.')
     print('* To stop this program, please press Control + C.')
     
     print()

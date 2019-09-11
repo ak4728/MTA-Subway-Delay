@@ -169,7 +169,7 @@ def delay(date, date_schedule = 'latest'):
 
     # conver timestamp
     stop_times = stop_times[stop_times.arrival_time_scheduled.apply(lambda x: int(x[:2])<24)] # filter abnormal arrival_time which is greater than 24 hour
-    stop_times = stop_times[stop_times.arrival_time_scheduled.apply(lambda x: int(x[3:5])<60)] # filter abnormal arrival_time which is greater than 60 minute
+    stop_times = stop_times[stop_times.arrival_time_scheduled.apply(lambda x: int(x[3:5])<60)] # filter abnormal arrival_time which is greater than 60 minutes
     stop_times.arrival_time_scheduled = pd.to_datetime(stop_times.arrival_time_scheduled.apply(lambda x: year + '-' + month + '-' + day + '-' + x))
 
     #################### Match ####################

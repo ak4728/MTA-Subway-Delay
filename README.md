@@ -3,14 +3,14 @@ This is a repository for collecting real-time data from the MTA Developer API to
 
 ## Requirements
 - MTA SUBWAY API KEY: [Click here to register and get a MTA API KEY](https://datamine.mta.info/user/register)
-- python libraries: os, time, datetime, requests, pandas, gtfs-realtime-bindings.  
-Please run codes below in terminal to prepare the dependent libraries:  
+- Dependent python libraries: os, time, datetime, requests, pandas, gtfs-realtime-bindings.  
+Please run codes below in terminal to prepare dependent libraries:  
 ``` python
 pip install --upgrade requests, datetime, pandas, gtfs-realtime-bindings
 ```
 
 ## Installation
-Please run codes below in terminal to install mtagtfs.
+Please run codes below in terminal to install mtagtfs.  
 Administrator permission is required.
 ``` python
 pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
@@ -19,8 +19,8 @@ pip install --upgrade git+https://github.com/ak4728/MTA-Subway-Delay.git
 ## Usage
 ### Terminal
 #### collect function
-Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files;  
-Requires mtagtfs.py in the current working directory;  
+Take APIkey as an input, keep requesting MTA subway real-time status and writting gtfs files;  
+Require mtagtfs.py in the current working directory;  
 To stop this program, please press ```Control + C```.
 ```python
 python mtagtfs.py
@@ -31,25 +31,25 @@ python mtagtfs.py
 import mtagtfs
 ```
 #### collect function
-Takes APIkey as an input, keeps requesting MTA subway real-time status and writting gtfs files;  
-Outputs GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs.
+Take APIkey as an input, keep requesting MTA subway real-time status and writting gtfs files;  
+Output GTFS files to the corresponding folder: e.g. ~/201808/20180801/gtfs_1_2018-08-01-12-00-00.gtfs.
 ``` python
 APIkey = 'YOUR MTA SUBWAY API KEY'
 mtagtfs.collect(APIkey)
 ```
 #### arrival function
-Takes date as an input, structures and integrates the GTFS files, and outputs a arrival csv file;  
-Requires GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs;  
-Outputs actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv.  
+Take date as an input, structure and integrate the GTFS files, and output an arrival csv file;  
+Require GTFS files prepared in the corresponding folder: e.g. ~/201808/20180801/gtfs_ace_20180801_041946.gtfs;  
+Output actual arrival csv file to the corresponding folder: e.g. ~/201808/arrival_20180801.csv.  
 ``` python
 date = '20180801'
 mtagtfs.arrival(date)
 ```
 
 #### delay function
-Takes date as an input, calculates delays by actual arrivals and schedules, and outputs a delay csv file;  
-Requires actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv;  
-Outputs calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv.  
+Take date as an input, calculate delays by actual arrivals and schedules, and output a delay csv file;  
+Require actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv;  
+Output calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv.  
 ``` python
 # Default Schedule date is the latest
 date = '20190901'

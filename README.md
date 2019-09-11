@@ -51,17 +51,17 @@ Take date as an input, calculate delays by actual arrivals and schedules, and ou
 Require actual arrival csv file prepared in the corresponding folder: e.g. ~/201808/arrival_20180801.csv;  
 Output calculated delay csv file to the corresponding folder: e.g. ~/201808/delay_20180801.csv.  
 ``` python
-# Default Schedule date is the latest
+# Default schedule date is the latest one
 date = '20190901'
 mtagtfs.delay(date)
 
-# For historical schedules, please set the argument date_schedule, refer to: https://transitfeeds.com/p/mta/79:
+# For historical schedules, please set the argument date_schedule; refer to: https://transitfeeds.com/p/mta/79.
 date = '20180801'
 mtagtfs.delay(date, date_schedule = '20180708')
 ```
 ## Data Description
 ### Update Interval
-- Real-time status updates per 15 seconds on average,
+- Real-time status updates per 15 seconds on average;
 - Schedules update every 4 months on average.
 
 ### Historical Data Availability

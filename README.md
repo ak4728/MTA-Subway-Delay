@@ -57,7 +57,7 @@ mtagtfs.delay(date)
 
 # For historical schedules, please set the argument date_schedule; refer to: https://transitfeeds.com/p/mta/79.
 date = '20180801'
-mtagtfs.delay(date, date_schedule = '20180708')
+mtagtfs.delay(date, date_schedule = '20180708') # '20180708' is the schedule releasing date
 ```
 ## Data Description
 ### Update Interval

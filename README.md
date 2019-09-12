@@ -2,7 +2,7 @@
 This is a repository for collecting real-time data from the MTA Developer API to compute subway delays at each station.
 
 ## Requirements
-- MTA SUBWAY API KEY: [Click here to register and get a MTA API KEY](https://datamine.mta.info/user/register)
+- MTA SUBWAY API KEY: [Click here to register an MTA API KEY](https://datamine.mta.info/user/register)
 - Dependent python libraries: os, time, datetime, requests, pandas, gtfs-realtime-bindings.  
 Please run codes below in terminal to prepare dependent libraries:  
 ``` python

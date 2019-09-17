@@ -60,7 +60,7 @@ date = '20180801'
 mtagtfs.delay(date, date_schedule = '20180708') # '20180708' is the schedule releasing date
 ```
 ## Application
-- Visualization Website: [MTA SUBWAY DELAY](https://public.tableau.com/profile/junjie.cai#!/vizhome/Book1_15686658217570/Dashboard1)
+- Visualization Website: [MTA SUBWAY DELAY](https://public.tableau.com/profile/junjie.cai#!/vizhome/Book1_15686658217570/MTASUBWAYDELAY)
 
 ## Data Description
 ### Update Interval

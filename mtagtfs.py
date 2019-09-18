@@ -61,7 +61,7 @@ def arrival(date):
     '''
     This function takes date(e.g. 20190901) as an input,
     structure and integrate the gtfs files in the corresponding folder,
-    output a arrival csv file.
+    output an arrival csv file.
     '''
     errornum = 0
     year, month, day = date[:4], date[4:6], date[6:8]
